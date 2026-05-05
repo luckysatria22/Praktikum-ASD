@@ -49,4 +49,52 @@ public class Queue {
             System.out.println("Jumlah elemen = " + size);
         }
     }
+    
+    public void clear() {
+        if (!IsEmpty()) {
+            front = rear = -1;
+            size = 0;
+            System.out.println("Queue berhasil dikosongkan");
+        } else {
+            System.out.println("Queue masih kosong");
+        }
+    }
+
+    public void Enqueue(int dt) {
+        if (IsFull()) {
+            System.out.println("Queue sudah penuh");
+        } else {
+            if (IsEmpty()) {
+                front = rear = 0;
+            } else {
+                if (rear == max - 1) {
+                    rear = 0;
+                } else {
+                    rear++;
+                }
+            }
+            data[rear] = dt;
+            size++;
+        }
+    }
+
+    public int Dequeue() {
+        int dt = 0;
+        if (IsEmpty()) {
+            System.out.println("Queue masih kosong");
+        } else {
+            dt = data[front];
+            size--;
+            if (IsEmpty()) {
+                front = rear = -1;
+            } else {
+                if (front == max - 1) {
+                    front = 0;
+                } else {
+                    front++;
+                }
+            }
+        }
+        return dt;
+    }
 }
