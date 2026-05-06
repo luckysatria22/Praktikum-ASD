@@ -27,6 +27,20 @@ public class SLLMain09 {
             sll.print();
         }
 
+        // Percobaan 2
+        System.out.println("data index 1 : ");
+        sll.getData(1);
+
+        System.out.println("data mahasiswa an Bimon berada pada index : " 
+        + sll.indexOf("bimon"));
+        System.out.println();
+
+        sll.removeFirst();
+        sll.removeLast();
+        sll.print();
+        sll.removeAt(0);
+        sll.print();
+
         sc.close();
     }
 }
