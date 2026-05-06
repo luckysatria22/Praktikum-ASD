@@ -1,5 +1,8 @@
 public class Mahasiswa {
-    String nim, nama, prodi, kelas;
+    String nim;
+    String nama;
+    String prodi;
+    String kelas;
 
     public Mahasiswa(String nim, String nama, String prodi, String kelas) {
         this.nim = nim;
@@ -9,6 +12,9 @@ public class Mahasiswa {
     }
 
     public void tampilkanData() {
-        System.out.println(nim + " - " + nama + " - " + prodi + " - " + kelas);
+        System.out.println("NIM   : " + nim);
+        System.out.println("Nama  : " + nama);
+        System.out.println("Prodi : " + prodi);
+        System.out.println("Kelas : " + kelas);
     }
 }
