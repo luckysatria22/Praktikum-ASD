@@ -1,0 +1,5 @@
+Jawaban Pertanyaan:
+2.1.2 Q1: Baris pertama menghasilkan "Linked list kosong" karena sll.print() dipanggil sebelum ada data yang ditambahkan — head masih null.
+2.1.2 Q2: Variable temp berfungsi sebagai pointer sementara untuk menelusuri (traverse) linked list tanpa mengubah posisi head. Jadi head selalu menunjuk node pertama.
+2.2.3 Q1: break digunakan agar loop berhenti setelah node yang cocok ditemukan dan dihapus — tanpa break, loop akan terus berjalan dan bisa menghapus node lain atau menyebabkan error NullPointerException.
+2.2.3 Q2: temp.next = temp.next.next — berfungsi memotong node target dari rantai. Node yang sebelumnya ada di temp.next di-skip sehingga tidak lagi terhubung ke list (otomatis ter-GC). Lalu if (temp.next == null) tail = temp memperbarui tail jika node yang dihapus adalah node terakhir.Sllmain
