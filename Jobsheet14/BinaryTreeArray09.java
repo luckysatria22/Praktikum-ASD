@@ -23,19 +23,24 @@ public class BinaryTreeArray09 {
         System.out.print(data[idxStart] + " ");  
         traverseInOrder(2 * idxStart + 2);       
     }
-
+    
+        // Method add() untuk memasukkan data ke dalam binary tree array
     public void add(int value) {
         idxLast++;
         if (idxLast >= data.length) {
-            System.out.println("Array penuh!"); idxLast--; return;
+            System.out.println("Array penuh!");
+            idxLast--;
+            return;
         }
         data[idxLast] = value;
     }
 
+    // Method traversePreOrder() secara rekursif
+    // Urutan: cetak node → kunjungi kiri → kunjungi kanan
     public void traversePreOrder(int idxStart) {
         if (idxStart > idxLast) return;
-        System.out.print(data[idxStart] + " ");  
-        traversePreOrder(2 * idxStart + 1);       
-        traversePreOrder(2 * idxStart + 2);   
+        System.out.print(data[idxStart] + " ");  // cetak dulu
+        traversePreOrder(2 * idxStart + 1);        // lalu kiri
+        traversePreOrder(2 * idxStart + 2);        // lalu kanan
     }
 }

@@ -116,4 +116,65 @@ public class BinaryTree09 {
             successor.left = current.left;
         }
     }
+
+    // Dipanggil dari luar
+    public void addRekursif(Mahasiswa09 mahasiswa) {
+        root = addRekursifHelper(root, mahasiswa);
+    }
+
+    // Helper rekursif private
+    private Node09 addRekursifHelper(Node09 current, Mahasiswa09 mahasiswa) {
+        if (current == null) {
+            // Posisi kosong ditemukan, buat node baru
+            return new Node09(null, mahasiswa, null);
+        }
+        if (mahasiswa.ipk < current.mahasiswa.ipk) {
+            // Rekursif ke kiri
+            current.left = addRekursifHelper(current.left, mahasiswa);
+        } else {
+            // Rekursif ke kanan
+            current.right = addRekursifHelper(current.right, mahasiswa);
+        }
+        return current;
+    }
+
+    public void cariMinIPK() {
+    if (isEmpty()) { System.out.println("Tree kosong."); return; }
+    // Pada BST, node terkecil selalu berada paling kiri
+    Node09 current = root;
+    while (current.left != null) {
+        current = current.left;
+    }
+    System.out.println("=== Mahasiswa IPK Terkecil ===");
+    current.mahasiswa.tampilInformasi();
+    }
+
+    public void cariMaxIPK() {
+        if (isEmpty()) { System.out.println("Tree kosong."); return; }
+        // Pada BST, node terbesar selalu berada paling kanan
+        Node09 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        System.out.println("=== Mahasiswa IPK Terbesar ===");
+        current.mahasiswa.tampilInformasi();
+    }
+
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+    System.out.println("=== Mahasiswa dengan IPK di atas " + ipkBatas + " ===");
+    tampilIPKdiAtasHelper(root, ipkBatas);
+    }
+
+    private void tampilIPKdiAtasHelper(Node09 node, double ipkBatas) {
+        if (node == null) return;
+        if (node.mahasiswa.ipk > ipkBatas) {
+            // Node ini memenuhi syarat; periksa subtree kiri dan kanan
+            tampilIPKdiAtasHelper(node.left, ipkBatas);
+            node.mahasiswa.tampilInformasi();
+            tampilIPKdiAtasHelper(node.right, ipkBatas);
+        } else {
+            // IPK node <= batas; hanya subtree kanan yang mungkin memenuhi syarat (BST)
+            tampilIPKdiAtasHelper(node.right, ipkBatas);
+        }
+    }
 }
